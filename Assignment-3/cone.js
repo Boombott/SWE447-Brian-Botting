@@ -5,12 +5,13 @@ function init() {
     var canvas = document.getElementById( "webgl-canvas" );
 
     gl = WebGLUtils.setupWebGL( canvas );
-    cone = new Cone(100);
 
     if ( !gl ) {
         alert("Unable to setup WebGL");
         return;
     }
+    cone = new Cone(100);
+
     
     gl.clearColor( 0.5, 0.2, 0.5, 0.7 );
     
