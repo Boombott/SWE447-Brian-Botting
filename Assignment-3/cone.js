@@ -10,7 +10,7 @@ function init() {
         alert("Unable to setup WebGL");
         return;
     }
-    cone = new Cone(100);
+    cone = new Cone(gl, 100);
 
     
     gl.clearColor( 0.5, 0.2, 0.5, 0.7 );
