@@ -7,12 +7,12 @@
   <script src="cone.js"></script>
   
   <script id="Cone-vertex-shader" type="x-shader/x-vertex">
-  attribute vec4 vposition;
+  attribute vec4 vPosition;
   
   void main()
   {
     gl_PointSize = 5.0;
-    gl_position = vPosition;
+    gl_Position = vPosition;
   }
   </script>
   <script id = "Cone-fragment-shader" type="x-shader/x-fragment">
