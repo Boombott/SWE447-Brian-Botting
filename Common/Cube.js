@@ -52,40 +52,7 @@ function Cube( vertexShaderId, fragmentShaderId ) {
             ]),
         numComponents : 3
     };
-    this.colors = {
-		values : new Float32Array([
-		    1.0, 0.0, 0.0, 
-		    1.0, 0.0, 0.0,
-		    1.0, 0.0, 0.0,
-		    1.0, 0.0, 0.0,
-		  
-		    1.0, 0.0, 0.0, 
-		    1.0, 0.0, 0.0,
-		    1.0, 0.0, 0.0,
-		    1.0, 0.0, 0.0,
-		    
-		    1.0, 0.0, 0.0, 
-		    1.0, 0.0, 0.0,
-		    1.0, 0.0, 0.0,
-		    1.0, 0.0, 0.0,
-		    
-		    1.0, 0.0, 0.0, 
-		    1.0, 0.0, 0.0,
-		    1.0, 0.0, 0.0,
-		    1.0, 0.0, 0.0,
-			
-		    1.0, 0.0, 0.0, 
-		    1.0, 0.0, 0.0,
-		    1.0, 0.0, 0.0,
-		    1.0, 0.0, 0.0,
-			
-		    1.0, 0.0, 0.0, 
-		    1.0, 0.0, 0.0,
-		    1.0, 0.0, 0.0,
-		    1.0, 0.0, 0.0
-		]),
-		numComponents : 3 
-	};
+  
     this.indices = { 
         values : new Uint16Array([
             // Add your list of triangle indices here
@@ -105,12 +72,6 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     };
     this.indices.count = this.indices.values.length;
 
-    this.colors.buffer = gl.createBuffer();
-    gl.bindBuffer( gl.ARRAY_BUFFER, this.colors.buffer );
-    gl.bufferData( gl.ARRAY_BUFFER, this.colors.values, gl.STATIC_DRAW );
-    this.colors.attributeLoc = gl.getAttribLocation( this.program, "vColor" );
-    gl.enableVertexAttribArray( this.colors.attributeLoc );
-    
 	
     this.positions.buffer = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, this.positions.buffer );
