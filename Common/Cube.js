@@ -22,7 +22,7 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 		
 		-0.5, -0.5, -0.5, //Vertex 0
 		0.5, -0.5, -0.5, //Vertex 1
-		0.5, 1.0, -0.5, //Vertex 2
+		0.5, 0.5, -0.5, //Vertex 2
 		-0.5, 0.5, -0.5, //Vertex 3
 		
 		-0.5, -0.5, 0.5, //Vertex 4
