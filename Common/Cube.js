@@ -27,6 +27,7 @@ function Cube( vertexShaderId, fragmentShaderId ) {
             1.0, 0.0, 1.0, //Vertex 5
             1.0, 1.0, 1.0, //Vertex 6
             0.0, 1.0, 1.0 //Vertex 7
+            
             ]),
         numComponents : 3
     };
@@ -36,10 +37,8 @@ function Cube( vertexShaderId, fragmentShaderId ) {
             // Add your list of triangle indices here
             0, 2, 3,
             0, 1, 2,
-            0, 5, 1,
-            0, 7, 5,
-            0, 6, 4,
-            0, 1, 6
+            0, 7, 3,
+            0, 4, 7
             
         ])
     };
