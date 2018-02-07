@@ -42,7 +42,11 @@ function Cube( vertexShaderId, fragmentShaderId ) {
             0, 5, 4,
             0, 1, 5,
             6, 3, 2,
-            6, 7, 3
+            6, 7, 3,
+            6, 4, 7,
+            6, 5, 4,
+            6, 1, 5,
+            6, 2, 1
             
         ])
     };
