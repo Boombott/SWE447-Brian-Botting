@@ -20,35 +20,35 @@ function Cube( vertexShaderId, fragmentShaderId ) {
         values : new Float32Array([
            // Add your list vertex positions here
 		
-		0.0, 0.0, 0.0, //Vertex 0
-		1.0, 0.0, 0.0, //Vertex 1
-		1.0, 1.0, 0.0, //Vertex 2
-		0.0, 1.0, 0.0, //Vertex 3
+		-0.5, -0.5, -0.5, //Vertex 0
+		0.5, -0.5, -0.5, //Vertex 1
+		0.5, 1.0, -0.5, //Vertex 2
+		-0.5, 0.5, -0.5, //Vertex 3
 		
-		0.0, 0.0, 1.0, //Vertex 4
-		0.0, 0.0, 0.0, //Vertex 5
-		0.0, 1.0, 0.0, //Vertex 6
-		0.0, 1.0, 1.0, //Vertex 7
+		-0.5, -0.5, 0.5, //Vertex 4
+		-0.5, -0.5, -0.5, //Vertex 5
+		-0.5, 0.5, -0.5, //Vertex 6
+		-0.5, 0.5, 0.5, //Vertex 7
 		
-		0.0, 0.0, 0.0, //Vertex 8
-		1.0, 0.0, 0.0, //Vertex 9
-		1.0, 0.0, 1.0, //Vertex 10
-		0.0, 0.0, 1.0, //Vertex 11
+		-0.5, -0.5, -0.5, //Vertex 8
+		0.5, -0.5, -0.5, //Vertex 9
+		0.5, -0.5, 0.5, //Vertex 10
+		-0.5, -0.5, 0.5, //Vertex 11
 		
-		0.0, 0.0, 1.0, //Vertex 12
-		1.0, 0.0, 1.0, //Vertex 13
-		1.0, 1.0, 1.0, //Vertex 14
-		0.0, 1.0, 1.0, //Vertex 15
+		-0.5, -0.5, 0.5, //Vertex 12
+		0.5, -0.5, 0.5, //Vertex 13
+		0.5, 0.5, 0.5, //Vertex 14
+		-0.5, 0.5, 0.5, //Vertex 15
 		
-		0.0, 1.0, 0.0, //Vertex 16
-		1.0, 1.0, 0.0, //Vertex 17
-		1.0, 1.0, 1.0, //Vertex 18
-		0.0, 1.0, 1.0, //Vertex 19
+		-0.5, 0.5, -0.5, //Vertex 16
+		0.5, 0.5, -0.5, //Vertex 17
+		0.5, 0.5, 0.5, //Vertex 18
+		-0.5, 0.5, 0.5, //Vertex 19
 		
-		1.0, 0.0, 0.0, //Vertex 20
-		1.0, 0.0, 1.0, //Vertex 21
-		1.0, 1.0, 1.0, //Vertex 22
-		1.0, 1.0, 0.0  //Vertex 23
+		0.5, -0.5, -0.5, //Vertex 20
+		0.5, -0.5, 0.5, //Vertex 21
+		0.5, 0.5, 0.5, //Vertex 22
+		0.5, 0.5, -0.5  //Vertex 23
             ]),
         numComponents : 3
     };
