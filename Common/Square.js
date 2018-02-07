@@ -13,7 +13,7 @@ function Square(gl, vertexShaderId, fragmentShaderId) {
 
 
 	gl.useProgram(this.program);
-	this.count = 4;
+	this.count = 8;
 
 	this.positions = {
 		values : new Float32Array([
