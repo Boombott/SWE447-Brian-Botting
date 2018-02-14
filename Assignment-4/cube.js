@@ -34,11 +34,10 @@ function render() {
 
   angle += 2.0; // degrees
 
-  cube.MV = rotate( angle, [1, 1, 0] );
+  cube.MV = rotate( speed * angle, [1, 1, 0] );
 
   cube.render();
 
-  ms.rotate(speed * angle, rotationAxis);
   requestAnimationFrame( render ); // schedule another call to render()
 }
 
