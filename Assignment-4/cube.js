@@ -22,10 +22,6 @@ function init() {
 
   cube = new Cube();
   
-  document.getElementById("slider").onchange = function() {
-    speed = 100 - event.srcElement.value;
-  };
-
   render();
 }
 
@@ -34,7 +30,7 @@ function render() {
 
   angle += 2.0; // degrees
 
-  cube.MV = rotate( speed * angle, [1, 1, 0] );
+  cube.MV = rotate(angle, [1, 1, 0] );
 
   cube.render();
 
