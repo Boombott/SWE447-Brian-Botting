@@ -65,35 +65,7 @@ function init() {
     document.getElementById("slider").onchange = function(event) {
         speed = event.target.value / 10; //100 - event.srcElement.value;
     };
-    
-    canvas.onmousedown = function handleMouseDown(event) {
-        mouseDown = true;
-        lastMouseX = event.clientX;
-        lastMouseY = event.clientY;
-    }
-
-    document.onmouseup = function handleMouseUp(event) {
-        mouseDown = false;
-        if (stoprotating) dAngle = 0.0;
-        return;
-
-    }
-
-    document.onmousemove = function handleMouseMove(event) {
-    if (!mouseDown) {
-      if(stoprotating) dAngle = 0.0;
-      return;
-    }
-    var newX = event.clientX;
-    var newY = event.clientY;
-
-    var deltaX = newX - lastMouseX;
-    var deltaY = newY - lastMouseY;
-    dAngle = degToRad(deltaX + deltaY) * Math.PI * 5;
-    lastMouseX = newX;
-    lastMouseY = newY;
-    }   
-
+   
 
     document.onkeydown = function handleKeyDown(event) {
         mkey = event.which || event.keyCode;
