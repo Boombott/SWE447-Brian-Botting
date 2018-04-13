@@ -16,16 +16,36 @@
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
 
-			var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-			var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-			var cube = new THREE.Mesh( geometry, material );
+			var texture7 = new THREE.TextureLoader().load("7.jpg");
+			var textureMelon = new THREE.TextureLoader().load("watermelon.jpg");
+			var textureCherry = new THREE.TextureLoader().load("cherry.png");
+			var textureLemon = new THREE.TextureLoader().load("lemon.jpg");
+			
+			var materials = [
+				new THREE.MeshBasicMaterial({
+					color: 0xffffff}),
+				new THREE.MeshBasicMaterial({
+					color: 0xffffff}),
+				new THREE.MeshBasicMaterial({
+					map: textureCherry}),
+				new THREE.MeshBasicMaterial({
+					map: textureLemon}),
+				new THREE.MeshBasicMaterial({
+					map: texture7}),
+				new THREE.MeshBasicMaterial({
+					map: textureMelon}),
+				
+			];
+			var geometry = new THREE.BoxGeometry(1, 1, 1 );
+			//var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+			var cube = new THREE.Mesh( geometry, materials );
 			scene.add( cube );
 			
-			var cube2 = new THREE.Mesh( geometry, material );
+			var cube2 = new THREE.Mesh( geometry, materials );
 			scene.add( cube2 );
 			cube2.translateX(2);
 			
-			var cube3 = new THREE.Mesh( geometry, material );
+			var cube3 = new THREE.Mesh( geometry, materials );
 			scene.add( cube3 );
 			cube3.translateX(-2);
 			
