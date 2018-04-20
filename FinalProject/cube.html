@@ -7,13 +7,17 @@
 		</style>
 	</head>
 	<body>
+		<button id = "Stop"> Stop Rolling </button>
 		<script src="../common/three.js"></script>
 		<script>
+			var speed = 0.2;
+			var speed2 = 0.225;
+			var speed3 = 0.25;
 			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
 
 			var renderer = new THREE.WebGLRenderer();
-			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.setSize( 1280, 720 );
 			document.body.appendChild( renderer.domElement );
 
 			var texture7 = new THREE.TextureLoader().load("7.jpg");
@@ -49,18 +53,27 @@
 			scene.add( cube3 );
 			cube3.translateX(-2);
 			
+			var geometry2 = new THREE.BoxGeometry(5, 0.05, 0.1);
+			var line = new THREE.Mesh(geometry2 , new THREE.MeshBasicMaterial({color: 0x00ff00}));
+			scene.add(line);
+			line.translateZ(1);
+			
 			camera.position.z = 5;
-
+			
 			var animate = function () {
 				requestAnimationFrame( animate );
 
-				cube.rotation.x += 0.1;
-				cube2.rotation.x += 0.075;
-				cube3.rotation.x += 0.125;
+				cube.rotation.x += speed;
+				cube2.rotation.x += speed2;
+				cube3.rotation.x += speed3;
 				
+				document.getElementById("Stop").onclick = function() { 
+					speed = 0;
+					speed2 = 0;
+					speed3 = 0;
+				} 
 				renderer.render(scene, camera);
 			};
-
 			animate();
 		</script>
 	</body>
