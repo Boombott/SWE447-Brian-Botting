@@ -7,15 +7,60 @@
 		</style>
 	</head>
 	<body>
-		<button id = "Stop"> Stop Rolling </button>
+		Click to stop/start spinning: 
+		<input id = "Stop" type = "checkbox"></checkbox>
 		<script src="../common/three.js"></script>
+		<script src="../common/OBJLoader.js"></script>
 		<script>
 			var speed = 0.2;
 			var speed2 = 0.225;
 			var speed3 = 0.25;
+			var tempRotation = 0;
 			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
 
+			function kickRotate(cubeRotation){
+				if(cubeRotation > (3 * (Math.PI/2)))
+					{
+						if (cubeRotation >= (7 * (Math.PI/4)))
+						{
+							cubeRotation = 0;
+						}else
+						{
+							cubeRotation = (3 * (Math.PI/2))
+						}
+					} else if (cubeRotation > Math.PI)
+					{
+						if (cubeRotation >= (5 *(Math.PI/4)))
+						{
+							cubeRotation = (3 * (Math.PI/2))
+						}else
+						{
+							cubeRotation = Math.PI
+						}
+					} else if (cubeRotation > (Math.PI/2))
+					{
+						if (cubeRotation >= (3 * (Math.PI/4)))
+						{
+							cubeRotation = Math.PI
+						}else
+						{
+							cubeRotation = Math.PI/2
+						}
+					} else
+					{
+						if (cubeRotation >= (Math.PI/4))
+						{
+							cubeRotation = Math.PI/2
+						}else
+						{
+							cubeRotation = 0;
+						}
+					}
+				return cubeRotation;
+			}
+				
+				
 			var renderer = new THREE.WebGLRenderer();
 			renderer.setSize( 1280, 720 );
 			document.body.appendChild( renderer.domElement );
@@ -24,6 +69,8 @@
 			var textureMelon = new THREE.TextureLoader().load("watermelon.jpg");
 			var textureCherry = new THREE.TextureLoader().load("cherry.png");
 			var textureLemon = new THREE.TextureLoader().load("lemon.jpg");
+			var textureWin = new THREE.TextureLoader().load("win.jpg");
+			var textureLost = new THREE.TextureLoader().load("Lose.jpg");
 			
 			var materials = [
 				new THREE.MeshBasicMaterial({
@@ -47,18 +94,41 @@
 			
 			var cube2 = new THREE.Mesh( geometry, materials );
 			scene.add( cube2 );
-			cube2.translateX(2);
+			cube2.translateX(1.5);
 			
 			var cube3 = new THREE.Mesh( geometry, materials );
 			scene.add( cube3 );
-			cube3.translateX(-2);
+			cube3.translateX(-1.5);
 			
-			var geometry2 = new THREE.BoxGeometry(5, 0.05, 0.1);
-			var line = new THREE.Mesh(geometry2 , new THREE.MeshBasicMaterial({color: 0x00ff00}));
-			scene.add(line);
-			line.translateZ(1);
+			var geometry2 = new THREE.BoxGeometry(4.5, 1.5, 0.1);
+			var line = new THREE.Mesh(geometry2 , new THREE.MeshBasicMaterial({map: textureWin}));
+			line.translateY(-1.5);
+			
+			var geometry2 = new THREE.BoxGeometry(4.5, 1.5, 0.1);
+			var line2 = new THREE.Mesh(geometry2 , new THREE.MeshBasicMaterial({map: textureLost}));
+			line2.translateY(-1.5);
+			
+			cube.translateY(0.5);
+			cube2.translateY(0.5);
+			cube3.translateY(0.5);
+			
 			
 			camera.position.z = 5;
+			
+			var loader = new THREE.OBJLoader();
+			
+			loader.load(
+				'slots.obj',
+				function(object){
+					scene.add(object);
+				},
+				function(xhr){
+					console.log((xhr.loaded/xhr.total * 100) + "% loaded" );
+				},
+				function(error){
+					console.log("An error happened");
+				}
+			);
 			
 			var animate = function () {
 				requestAnimationFrame( animate );
@@ -67,13 +137,50 @@
 				cube2.rotation.x += speed2;
 				cube3.rotation.x += speed3;
 				
-				document.getElementById("Stop").onclick = function() { 
-					speed = 0;
-					speed2 = 0;
-					speed3 = 0;
-				} 
+				if (cube.rotation.x >= (2 * Math.PI))
+				{
+					cube.rotation.x = 0;
+				}
+				if (cube2.rotation.x >= (2 * Math.PI))
+				{
+					cube2.rotation.x = 0;
+				}
+				if (cube3.rotation.x >= (2 * Math.PI))
+				{
+					cube3.rotation.x = 0;
+				}
+				
+				
+				document.getElementById("Stop").onchange = function() { 
+					if(document.getElementById("Stop").checked)
+					{
+						speed = 0;
+						speed2 = 0;
+						speed3 = 0;
+						cube.rotation.x = kickRotate(cube.rotation.x);
+						cube2.rotation.x = kickRotate(cube2.rotation.x);
+						cube3.rotation.x = kickRotate(cube3.rotation.x);
+						if(cube.rotation.x == cube2.rotation.x && cube.rotation.x == cube3.rotation.x && cube2.rotation.x == cube3.rotation.x)
+						{
+							scene.add(line);
+
+						} else
+						{
+							scene.add(line2);
+						}
+					} else
+					{
+						speed = 0.2;
+						speed2 = 0.225;
+						speed3 = 0.25;
+						scene.remove(line);
+						scene.remove(line2);
+					}
+				}
 				renderer.render(scene, camera);
 			};
+			
+			
 			animate();
 		</script>
 	</body>
